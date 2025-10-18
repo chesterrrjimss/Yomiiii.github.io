@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hi Yomiii 💕</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #ffcce7, #ffb6c1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #ff0066;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .container {
+      background: white;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      max-width: 320px;
+      width: 90%;
+      position: relative;
+      z-index: 2;
+    }
+
+    h2 {
+      margin-bottom: 15px;
+    }
+
+    button {
+      background: #ff66a3;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #ff3385;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .message {
+      font-size: 1.3rem;
+      animation: fadeIn 2s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255, 0, 102, 0.5);
+      animation: floatUp 5s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container" id="survey-container">
+    <h2>💖 Little Survey 💖</h2>
+    <p>Answer this before you continue 😚</p>
+    <form id="survey-form">
+      <p>1. Kamusta araw mo, Yomiii?</p>
+      <input type="text" id="q1" required><br><br>
+
+      <p>2. Ilang beses ka ngumiti today? 😁</p>
+      <input type="number" id="q2" required><br><br>
+
+      <p>3. Ready ka na ba sa surprise? 😏</p>
+      <select id="q3" required>
+        <option value="">--Choose--</option>
+        <option>Yes</option>
+        <option>Of course!</option>
+        <option>Super ready 😍</option>
+      </select><br><br>
+
+      <button type="submit">Submit 💌</button>
+    </form>
+  </div>
+
+  <div class="container hidden" id="message-container">
+    <p class="message">
+      Hi Yomiii 💕<br><br>
+      You did well today and I'm very proud of youu!!!<br>
+      Ganda ganda mo and cute superrr!! 💖<br><br>
+      I'm always here for youu 💞
+    </p>
+  </div>
+
+  <script>
+    const form = document.getElementById('survey-form');
+    const surveyContainer = document.getElementById('survey-container');
+    const messageContainer = document.getElementById('message-container');
+
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      surveyContainer.classList.add('hidden');
+      messageContainer.classList.remove('hidden');
+      startHearts();
+    });
+
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.classList.add('heart');
+        heart.innerHTML = '💖';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 15 + 'px';
+        heart.style.animationDuration = (Math.random() * 3 + 2) + 's';
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 5000);
+      }, 300);
+    }
+  </script>
+</body>
+</html>
